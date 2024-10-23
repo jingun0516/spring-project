@@ -1,0 +1,18 @@
+package com.estsoft.springproject.controller;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class Person {
+    private Long id;
+    private String name;
+    private int age;
+    private List<String> hobbies;
+}
