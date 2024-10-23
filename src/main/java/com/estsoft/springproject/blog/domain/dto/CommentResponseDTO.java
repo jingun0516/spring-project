@@ -3,6 +3,7 @@ package com.estsoft.springproject.blog.domain.dto;
 import com.estsoft.springproject.blog.domain.Article;
 import com.estsoft.springproject.blog.domain.Comment;
 import com.estsoft.springproject.util.DateFormatUtil;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,7 @@ public class CommentResponseDTO {
     private Long articleId;
     private String body;
     private String createdAt;
+    @JsonIgnore
     private ArticleResponse article;
 
     public CommentResponseDTO(Comment comment) {

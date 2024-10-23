@@ -39,6 +39,7 @@ public class Article {
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "article")
+    @Column(name = "comments")
     private List<Comment> comments;
 
     // 생성자

@@ -2,6 +2,7 @@ package com.estsoft.springproject.blog.domain;
 
 import com.estsoft.springproject.blog.domain.dto.CommentRequestDTO;
 import com.estsoft.springproject.blog.domain.dto.CommentResponseDTO;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;

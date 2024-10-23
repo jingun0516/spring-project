@@ -21,7 +21,7 @@ public class CommentArticleResponseDTO {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private List<Comment> comments;
+    private List<CommentResponseDTO> comments;
 
     public CommentArticleResponseDTO(Article article) {
         this.id = article.getId();
@@ -29,6 +29,8 @@ public class CommentArticleResponseDTO {
         this.content = article.getContent();
         this.createdAt = article.getCreatedAt();
         this.updatedAt = article.getUpdatedAt();
-        this.comments = article.getComments();
+        this.comments = article.getComments().stream()
+                .map(CommentResponseDTO::new)
+                .toList();
     }
 }
