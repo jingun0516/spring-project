@@ -4,6 +4,7 @@ import com.estsoft.springproject.blog.domain.dto.AddArticleRequest;
 import com.estsoft.springproject.blog.domain.Article;
 import com.estsoft.springproject.blog.domain.dto.ArticleResponse;
 import com.estsoft.springproject.blog.domain.dto.UpdateArticleRequest;
+import com.estsoft.springproject.blog.service.BlogExternalService;
 import com.estsoft.springproject.blog.service.BlogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -27,7 +28,7 @@ import java.util.List;
 public class BlogController {
     private final BlogService service;
 
-    public BlogController(BlogService service) {
+    public BlogController(BlogService service, BlogExternalService externalService) {
         this.service = service;
     }
 

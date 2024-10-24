@@ -39,8 +39,8 @@ public class ExternalApiController {
         ResponseEntity<List<Content>> resultList =
             restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Content>>() {});
 
-        log.info("code: {}", resultList.getStatusCode());
-        log.info("{}", resultList.getBody());
+//        log.info("code: {}", resultList.getStatusCode());
+//        log.info("{}", resultList.getBody());
 
         List<Content> contents = resultList.getBody();
 
@@ -52,6 +52,29 @@ public class ExternalApiController {
             }
         }
 
+        return "OK";
+    }
+
+
+    @GetMapping("/api/external2")
+    public String callCommentApi() {
+        // 외부 API 호출
+        RestTemplate restTemplate = new RestTemplate();
+        String url = "https://jsonplaceholder.typicode.com/comments";
+
+        // 외부 API 호출, 역직렬화 (restTemplate)
+        ResponseEntity<List<Content>> resultList =
+                restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<Content>>() {});
+
+        List<Content> contents = resultList.getBody();
+
+        String postUrl = "https://localhost:8080/articles";
+
+        if(contents!=null) {
+            for (Content content : contents) {
+                service.saveArticle(content.toEntity());
+            }
+        }
 
         return "OK";
     }
