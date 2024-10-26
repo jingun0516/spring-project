@@ -10,7 +10,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -78,6 +77,12 @@ public class BlogController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/articles")
+    public ResponseEntity<Void> deletedAll() {
+        service.deleteAll();
+        return ResponseEntity.ok().build();
+    }
+
     @Operation(summary = "게시글 수정")
     @PutMapping("/articles/{id}")
     @Parameter(name = "id", description = "수정할 블로그 글 ID", example = "45")
@@ -86,6 +91,7 @@ public class BlogController {
         Article updatedArticle = service.update(id, request);
         return ResponseEntity.ok(updatedArticle.convert());
     }
+
 
     // reference : https://docs.spring.io/spring-framework/reference/web/webmvc/mvc-controller/ann-exceptionhandler.html
 //    @ExceptionHandler(IllegalArgumentException.class)

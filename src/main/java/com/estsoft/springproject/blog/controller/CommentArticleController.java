@@ -48,6 +48,12 @@ public class CommentArticleController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/api/comments")
+    public ResponseEntity<Void> deleteCommentAll(){
+        service.deleteAll();
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/api/articles/{articleId}/comments")
     public ResponseEntity<CommentArticleResponseDTO> gets(@PathVariable Long articleId) {
         Article article = service.gets(articleId);

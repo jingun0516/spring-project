@@ -38,6 +38,10 @@ public class BlogService {
         repository.deleteById(id);
     }
 
+    public void deleteAll() {
+        repository.deleteAll();
+    }
+
     @Transactional
     public Article update(Long id, UpdateArticleRequest request) {
         Article article = findBy(id);       // 수정하고싶은 article객체 가져오기

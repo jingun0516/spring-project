@@ -17,6 +17,10 @@ GET localhost:8080/api/articles/{{id}}
 ### 게시글 단건 삭제 API
 DELETE localhost:8080/api/articles/{{id}}
 
+### 게시글 전체 삭제 API
+DELETE localhost:8080/api/articles
+
+
 ### 게시글 단건 수정 API
 PUT localhost:8080/api/articles/{{id}}
 Content-Type: application/json
@@ -40,7 +44,7 @@ Content-Type: application/json
 
 
 ### 코멘트 조회 API
-@commentId = 2
+@commentId = 1
 GET localhost:8080/api/comments/{{commentId}}
 
 
@@ -63,5 +67,13 @@ GET localhost:8080/api/articles/{{articleId}}/comments
 
 
 
-### 외부 API
-GET localhost:8080/api/external
+### 외부 API 로 article 데이터 받아오기
+POST localhost:8080/api/external
+
+
+### 외부 API 로 comment 데이터 받아오기
+POST localhost:8080/api/external2
+
+
+### 댓글 전부 삭제
+DELETE localhost:8080/api/comments

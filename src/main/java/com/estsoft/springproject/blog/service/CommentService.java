@@ -25,9 +25,9 @@ public class CommentService {
 
     // 댓글 정보 생성 REST API
     public Comment saveComment(Long articleId, CommentRequestDTO request) {
-//        Article article = blogService.findBy(articleId);
         Article article = blogRepository.findById(articleId)
                 .orElseThrow(() -> new IllegalArgumentException("not found id: " + articleId));
+
 
         return commentRepository.save(new Comment(request.getBody(), article));
     }
@@ -54,17 +54,22 @@ public class CommentService {
     }
 
 
-
     // 댓글 정보 삭제 REST API
     public void deleteBy(Long commentId) {
         commentRepository.deleteById(commentId);
+    }
+
+    // 댓글 전부 삭제 REST API
+    public void deleteAll() {
+        commentRepository.deleteAll();
     }
 
 
     // 게시글과 댓글 정보를 한 번에 조회하는 REST API
     public Article gets(Long articleId) {
         Article article = blogRepository.findById(articleId).orElseThrow();
-        article.setComments(commentRepository.findAll());
+
+        article.setComments(commentRepository.findByArticleId(articleId));
 
         return article;
     }

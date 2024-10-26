@@ -8,5 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentRequestDTO {
+    private long article_id;
     private String body;
 }

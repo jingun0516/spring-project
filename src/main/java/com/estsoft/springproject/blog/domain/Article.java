@@ -20,7 +20,6 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class Article {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "article_id")
     private Long id;
 
@@ -44,7 +43,8 @@ public class Article {
 
     // 생성자
     @Builder
-    public Article(String title, String content) {
+    public Article(long id, String title, String content) {
+        this.id = id;
         this.title = title;
         this.content = content;
     }

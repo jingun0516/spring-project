@@ -11,11 +11,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddArticleRequest {
+    private long article_id;
     private String title;
     private String content;
 
     public Article toEntity() {
         return Article.builder()
+                .id(this.article_id)
                 .title(this.title)
                 .content(this.content)
                 .build();
